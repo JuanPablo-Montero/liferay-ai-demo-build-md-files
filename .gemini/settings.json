@@ -10,9 +10,9 @@
   "experimental": { 
     "enableAgents": true 
   },  
-  "model": {
-    "name": "gemini-3.8-flash"
-  },
+  //"model": {
+  //  "name": "gemini-3.8-flash"
+  //},
   //"model": {
   //  "name": "gemini-4-argon-preview"
   //},
