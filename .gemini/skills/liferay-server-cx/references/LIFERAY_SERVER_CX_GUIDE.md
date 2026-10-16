@@ -83,7 +83,9 @@ my-custom-object-action:
 ```
 
 ### Example `LCP.json`
-Crucial for Liferay Cloud deployment. Note the `id: "__PROJECT_ID__"` pattern and the required LXC environment variables.
+Crucial for Liferay Cloud deployment. Note the `id: "__PROJECT_ID__"` pattern and the required LXC environment variables. 
+**IMPORTANT Constraint:** The `id` field maps directly to Kubernetes service names in Liferay Cloud. It **MUST be strictly alphanumeric and cannot start with a number** (no hyphens or underscores). Using the `__PROJECT_ID__` placeholder is highly recommended, as the DXP Gradle build will automatically sanitize the folder name and inject a compliant ID during the build process.
+
 ```json
 {
   "cpu": 1,
@@ -144,11 +146,43 @@ Server-side extensions are deployed differently than standard frontend extension
 
 For demo purposes, Node.js (with Express) is the standard and preferred framework due to its lightweight nature, fast spin-up times in PaaS, and native handling of Liferay's JSON payloads.
 
-### Handling an Object Action (Express.js) & User Context
+### Handling LXC Secrets (OAuth Credentials)
 
-When Liferay triggers an Object Action Client Extension, it securely passes the context of the user who triggered the action via a **JWT (JSON Web Token)** in the `Authorization` header.
+When you define an `oAuthApplicationHeadlessServer` in `client-extension.yaml`, Liferay Cloud automatically creates the OAuth application and injects its credentials into your microservice container. 
 
-Here is how you handle the action and the user context in Node.js:
+**CRITICAL:** Liferay Cloud does *not* inject these credentials as a single JSON file. It mounts a directory (typically `/etc/liferay/lxc/ext-init-metadata`) containing multiple plaintext files. Your application must explicitly parse the directory and read the `.client.id` and `.client.secret` files.
+
+```javascript
+const fs = require('fs');
+const METADATA_PATH = process.env.LIFERAY_ROUTES_CLIENT_EXTENSION || '/etc/liferay/lxc/ext-init-metadata';
+
+function getOAuthCredentials() {
+    if (!fs.existsSync(METADATA_PATH)) return null;
+    
+    // Ensure we are reading a directory
+    const stats = fs.statSync(METADATA_PATH);
+    if (!stats.isDirectory()) return null;
+
+    const files = fs.readdirSync(METADATA_PATH);
+    let clientId = null;
+    let clientSecret = null;
+
+    // Search for the specific credential files injected by LXC
+    const clientIdFile = files.find(f => f.endsWith('.oauth2.headless.server.client.id'));
+    const clientSecretFile = files.find(f => f.endsWith('.oauth2.headless.server.client.secret'));
+
+    if (clientIdFile) clientId = fs.readFileSync(`${METADATA_PATH}/${clientIdFile}`, 'utf8').trim();
+    if (clientSecretFile) clientSecret = fs.readFileSync(`${METADATA_PATH}/${clientSecretFile}`, 'utf8').trim();
+
+    return (clientId && clientSecret) ? { clientId, clientSecret } : null;
+}
+```
+
+### Handling an Object Action (Express.js) & Payload Parsing
+
+When Liferay triggers an Object Action Client Extension, it securely POSTs a JSON payload.
+
+**CRITICAL Payload Structure (Liferay 7.4+):** The custom fields and relationship IDs are *not* located at the root of the `objectEntry` object. They are nested inside `objectEntry.values`.
 
 ```javascript
 const express = require('express');

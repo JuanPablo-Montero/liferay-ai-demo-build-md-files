@@ -21,9 +21,10 @@ Each scope grants access to all operations in the module. There are no per endpo
 Liferay's object work spans two distinct REST modules with distinct scopes:
 
 - `Liferay.Object.Admin.REST.everything` — **admin surface**. Object **definition** CRUD: create/update/publish definitions, fields, relationships, validations, actions. Endpoints under `/o/object-admin/v1.0/`.
-- `Liferay.Headless.Object.everything` — **entry surface**. Object **entry** CRUD on published objects. Endpoints under `/o/c/<pluralLabel>/`.
+- `Liferay.Headless.Object.everything` — **entry surface generic**. Provides broad access to the generic Object endpoints. 
+- `c_objectname.everything` — **entry surface specific**. To read, write, or manage *entries* within a specific Custom Object via its dedicated `/o/c/objectnames` endpoint, you MUST explicitly request the generated REST scope for that object (e.g. `c_contactprofile.everything`, `c_advocacyactivity.everything`). The generic Headless.Object scope is not always sufficient.
 
-A microservice CET that only reads/writes object entries (most `objectAction`, `objectValidationRule`, `objectEntryManager` cases) needs only `Liferay.Headless.Object.everything`. A site initializer that also defines new objects needs both.
+A microservice CET that only reads/writes object entries (most `objectAction`, `objectValidationRule`, `objectEntryManager` cases) needs the explicit `c_objectname.everything` scopes for the objects it touches. A site initializer that also defines new objects needs the Admin scope as well.
 
 ## Scope Table
 
