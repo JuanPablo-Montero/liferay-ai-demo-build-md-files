@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "liferay-mcp": {
+      "type": "http",
+      "url": "${LIFERAY_MCP_URL}",
+      "headers": {
+        "Authorization": "Basic ${LIFERAY_MCP_BASIC_AUTH}"
+      }
+    }
+  }
+}
