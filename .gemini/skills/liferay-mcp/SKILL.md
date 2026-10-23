@@ -1,9 +1,9 @@
-<skill>
+---
+name: liferay-mcp
+description: Expert guidance for interacting with the Liferay MCP Server (liferay-mcp). Use this skill to correctly discover, inspect, and invoke Liferay Headless, Object, and Commerce APIs against a live Liferay instance, inspect OpenAPI schemas, or make real-time environment changes.
+---
 
 # liferay-mcp
-
-## Description
-Expert guidance for interacting with the Liferay MCP Server. Use this skill to correctly discover, inspect, and invoke Liferay Headless, Object, and Commerce APIs.
 
 ## Instructions
 1. **Three-Step API Integration Flow**:
@@ -32,5 +32,3 @@ Expert guidance for interacting with the Liferay MCP Server. Use this skill to c
 - **Content & Portal Management**:
   - Web Contents / Documents: `/headless-delivery/v1.0`
   - Fragments Admin: `/headless-admin-fragment/v1.0`
-
-</skill>

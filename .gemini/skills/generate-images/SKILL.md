@@ -1,6 +1,6 @@
 ---
 name: generate-images
-description: Workflow management for Imagen 4 image generation and post-processing. Use when generating AI assets, enforcing aspect ratios (e.g. 16:9), changing resolutions (1K or 2K), or optimizing file sizes for web delivery.
+description: Generate and post-process images (hero backgrounds, product thumbnails, avatars, icons, patterns, fragment thumbnails) using the Google gemini-3.1-flash-image REST API (needs GEMINI_API_KEY). Use when generating AI assets, enforcing aspect ratios (e.g. 16:9), changing resolutions (1K or 2K), or optimizing file sizes for web delivery.
 ---
 
 # Generate Images Skill

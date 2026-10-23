@@ -1,13 +1,26 @@
 ---
-
-description: Orchestrate a complete Liferay site experience from a single prompt. Composes objects, business logic, fragments, pages, roles, and theme into a working site. Use when the user asks to "build a site", "create a site experience", or describes a multiobject, multipage scenario. Calls all other skills in sequence.
-name: build-site
-
+name: liferay-demo-site-initializer
+description: OPT-IN ONLY. Orchestrate a complete, repeatable Liferay demo site packaged as a Site Initializer (objects, business logic, fragments, pages, roles, theme). Use ONLY when the user explicitly asks to "package a full demo", "build a site initializer", "create a repeatable site" or "build a site". Never use it by default for individual components.
 ---
 
 # Build Site
 
 One command orchestrator. The user describes the site; this skill calls the right subskills in the right order.
+
+> **Sub-skill name mapping (this repo).** This workflow was written against a larger skill pack. The sub-skill names below do not exist as separate skills here; use these files instead (paths relative to `.gemini/skills/`):
+>
+> | Name used below | Use in this repo |
+> | --- | --- |
+> | `feature-flags` | `liferay-admin/references/FEATURE_FLAGS_GUIDE.md` + `liferay-shared/rules/feature-flags-catalog.md` |
+> | `manage-objects` | `liferay-data-apis/references/OBJECT_DEFINITION_CREATION_AND_POPULATION.md` |
+> | `manage-object-logic` | `liferay-shared/rules/object-actions-catalog.md` + `liferay-server-cx/references/LIFERAY_SERVER_CX_GUIDE.md` |
+> | `scaffold-client-extension` | `liferay-cx-frontend/references/GUIDED_CLIENT_EXTENSION.md` + `liferay-shared/rules/client-extension-types.md` |
+> | `scaffold-fragment` | `liferay-ui-fragments` skill |
+> | `manage-pages` | `liferay-shared/rules/page-types.md` + `liferay-shared/rules/site-initializer-format.md` |
+> | `theme-and-design` | `liferay-ui-fragments/references/THEME_AND_DESIGN_GUIDE.md` |
+> | `manage-roles-permissions` | `liferay-data-apis/references/ROLES_PERMISSIONS_GUIDE.md` |
+> | `mcp-server` | `liferay-mcp` skill |
+> | `rules/*.md` | `liferay-shared/rules/*.md` |
 
 ## When to Invoke
 

@@ -16,7 +16,7 @@ Before attempting to guess constants, feature flags, page types, or OAuth scopes
 
 Before building a new fragment, especially a complex one like a site header or footer, **always check for an existing implementation in the `.gemini` directory.**
 
-This project contains pre-built, feature-rich fragments (e.g., `.gemini/sigma-header`) that provide a robust foundation for common needs. Reusing them can save significant development time.
+This project contains pre-built, feature-rich fragments (e.g., `.gemini/ef-header`, the Everflow header) that provide a robust foundation for common needs. Reusing them can save significant development time.
 
 ### Benefits of Reusing
 - **Feature-Complete:** These fragments often include complex features like dynamic navigation, mega menus, search modals, and responsive mobile views out-of-the-box.
@@ -24,8 +24,8 @@ This project contains pre-built, feature-rich fragments (e.g., `.gemini/sigma-he
 - **Best Practices:** They serve as a working example of the best practices outlined in this guide.
 
 ### How to Adapt an Existing Fragment
-1.  **Copy:** Copy the files from the example directory (e.g., `.gemini/sigma-header`) into your fragment collection (e.g., `everflow-liferay/fragments/everflow-collection/ef-header`).
-2.  **Rename & Rebrand:** Perform a find-and-replace to change class prefixes (e.g., `sigma-` to `ef-`) and any hardcoded text (e.g., "Sigma Pharmaceuticals" to "Everflow").
+1.  **Copy:** Copy the files from the example directory (e.g., `.gemini/ef-header`) into your fragment collection (e.g., `everflow-liferay/fragments/everflow-collection/ef-header`).
+2.  **Rename & Rebrand:** Perform a find-and-replace to change class prefixes (e.g., `ef-` to your prefix) and any hardcoded text (e.g., "Everflow" to the customer name).
 3.  **Map CSS Variables:** In the fragment's CSS file, map the fragment-specific variables to the theme's global CSS variables to ensure the styling matches the rest of the site.
 4.  **Update Resources:** Replace any hardcoded resources like logos with ones from your project's `resources` folder.
 
@@ -286,14 +286,14 @@ When building the final demo, follow this recommended page structure to ensure a
 
 ## 10. Image Generation with `generate-images`
 
--   **API Limitations:** The default image tools may not be sufficient. Use the `generate-images` skill and the Imagen 4 Python API for better control.
--   **Capabilities:** The Imagen 4 API supports different resolutions (1K, 2K) and native aspect ratios (1:1, 16:9, etc.).
--   **For more details, see [IMAGEN_4_GUIDE.md](../../generate-images/references/IMAGEN_4_GUIDE.md).**
+-   **API Limitations:** The default image tools may not be sufficient. Use the `generate-images` skill and the Gemini 3.1 Flash Image Python API for better control.
+-   **Capabilities:** The API supports different resolutions (1K, 2K) and native aspect ratios (1:1, 16:9, etc.).
+-   **For more details, see [GEMINI_3_1_FLASH_IMAGE_GUIDE.md](../../generate-images/references/GEMINI_3_1_FLASH_IMAGE_GUIDE.md).**
 
 ## 9. Full DOM Extraction with `playwright`
 
 -   **Purpose:** To accurately analyze a modern, JavaScript-heavy website, `web_fetch` is insufficient. A headless browser is required.
--   **For more details, see [playwright_guide.md](playwright_guide.md).**
+-   **For more details, see [PLAYWRIGHT_GUIDE_DOM_EXTRACTION.md](../../playwright-scraper/references/PLAYWRIGHT_GUIDE_DOM_EXTRACTION.md).**
 
 ## 10. Detecting Edit Mode
 

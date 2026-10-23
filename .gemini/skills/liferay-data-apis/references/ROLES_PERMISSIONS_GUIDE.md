@@ -15,7 +15,7 @@ Create roles and assign the minimum required permissions for objects, pages, and
 - "Grant edit permissions on this object to Site Members"
 - "Make this page visible only to authenticated users"
 - "Give the Sales role permission to add and update Orders"
-- Called by `build-site` during the roles and ACL phase
+- Called by `liferay-demo-site-initializer` during the roles and ACL phase
 
 ## Prerequisites
 

@@ -17,7 +17,7 @@ When iterating on a site built from a site initializer, theme changes apply **li
 - "Set up a style book with our design tokens"
 - "Define a header and footer for all pages"
 - "Create a dark variant of the site"
-- Called by `build-site` when the user specifies visual design requirements
+- Called by `liferay-demo-site-initializer` when the user specifies visual design requirements
 
 ## Workflow
 

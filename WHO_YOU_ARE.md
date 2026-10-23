@@ -25,3 +25,18 @@ To keep context lean, Shirley uses specialized modules:
 ## How to Install
 
 To use these skills in your own project, simply copy the `.gemini` folder from this repository and paste it into the root of your Liferay working directory. This will allow Shirley to access all the specialized expert modes and configurations defined here.
+
+## Reference-link mapping
+Some reference files were written for a larger skill pack and mention files like `skills/manage-objects/SKILL.md` or `rules/guest-access.md`. In this repo:
+- `rules/<x>.md` → `.gemini/skills/liferay-shared/rules/<x>.md`
+- `skills/scaffold-fragment`, `skills/theme-and-design`, `skills/manage-form-containers` → `liferay-ui-fragments` (and its references)
+- `skills/manage-objects`, `skills/manage-roles-permissions` → `liferay-data-apis` (and its references)
+- `skills/scaffold-client-extension`, `skills/guided-client-extension` → `liferay-cx-frontend`
+- `skills/manage-object-logic` → `liferay-server-cx` + `rules/object-actions-catalog.md`
+- `skills/manage-ai-hub` → `liferay-ai-hub` / `liferay-admin/references/MANAGE_AI_HUB_GUIDE.md`
+- `skills/mcp-server` → `liferay-mcp`
+- `skills/workspace-init`, `skills/deploy-and-verify`, `skills/feature-flags` → `liferay-admin`
+- `skills/manage-pages` → `liferay-shared/rules/page-types.md` + `site-initializer-format.md`
+
+## Reusable examples
+- `.gemini/ef-header/` is a pre-built, feature-rich header fragment (Everflow) to copy and rebrand. Note its `fragment.json` uses `"type": "section"`; change it to `"component"` if it goes into a site initializer.

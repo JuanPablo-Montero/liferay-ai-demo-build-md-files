@@ -1,6 +1,6 @@
 ---
 name: liferay-admin
-description: Procedural knowledge for Liferay workspace setup and Lighthouse performance optimization. Use for environment configuration or resolving performance issues.
+description: Procedural knowledge for Liferay workspace setup, deployments, Liferay Cloud (lcp CLI), environment promotion (Dev/UAT/Prod), feature flags, Glowroot APM, Lighthouse performance optimisation, Analytics (LDP) connection and AI Hub configuration.
 ---
 
 # Liferay Administration & Performance Skill

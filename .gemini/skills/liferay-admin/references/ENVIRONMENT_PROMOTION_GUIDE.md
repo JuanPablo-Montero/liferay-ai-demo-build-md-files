@@ -15,7 +15,7 @@ Switch portal configurations per deployment target, promote property changes bet
 - "Export the object definitions so we can import them to production"
 - "Capture the current site as a site initializer for version control"
 - "Set up a database connection for dev"
-- Called by `build-site` after runtime iteration when the user wants to commit the site to source control
+- Called by `liferay-demo-site-initializer` after runtime iteration when the user wants to commit the site to source control
 
 ## Workspace Environment Model
 
